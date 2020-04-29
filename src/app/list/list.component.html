@@ -1,0 +1,29 @@
+<div class="wrapper">
+    <div class="container todo">
+        <div class="main-field">
+            <input type="text" placeholder="To do">
+            <div class="plus-item">
+                <svg width="36" height="36" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M30 0C27.2386 0 25 2.23853 25 5V25H5C2.23859 25 0 27.2385 0 30C0 32.7615 2.23859 35 5 35H25V55C25 57.7615 27.2386 60 30 60C32.7614 60 35 57.7615 35 55V35H55C57.7614 35 60 32.7615 60 30C60 27.2385 57.7614 25 55 25H35V5C35 2.23853 32.7614 0 30 0Z" />
+                </svg>
+            </div>
+        </div>
+        <div class="wrapper-item">
+            <app-item></app-item>
+        </div>
+    </div>
+    <div class="container done">
+        <div class="main-field">
+            <input type="text" placeholder="Done">
+            <div class="plus-item minus">
+                <svg width="36" height="10" viewBox="0 0 60 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="60" width="10" height="60" rx="5" transform="rotate(90 60 0)"/>
+                </svg>
+            </div>
+        </div>
+        <div class="wrapper-item">
+            <app-item></app-item>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+div
+    display: flex
+    
+.wrapper
+    margin-top: 25px
+    width: 100%
+    .item
+        flex-direction: column
+        width: 100%
+        border-radius: 10px
+        background: #fff6d9
+        input
+            width: 100%
+            border: 0
+            background: transparent
+            font-size: 1.5rem
+            font-weight: bold
+            color: #333333
+            transition: .2s ease
+            &:focus
+                padding-left: 10px
+                outline: 0
+        .title-item
+            border-radius: 10px 10px 0 0
+            width: 100%
+            padding: 10px
+            background: repeating-linear-gradient(-45deg,#ffeaa3,#ffeaa3 5px,#fff7dc 5px,#fff7dc 10px)
+        .description
+            width: 100%
+            padding: 10px
+            border-bottom: 1px solid #dddddd
+            input
+                font-weight: normal
+                font-size: 1rem
+        .date
+            padding: 10px
+            border-radius: 0 0 10px 10px
+            justify-content: space-between
