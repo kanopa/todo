@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Todo } from '../models/todo';
 
 @Component({
   selector: 'app-item',
@@ -7,16 +8,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class ItemComponent implements OnInit {
 
-  title: string;
-  description: string;
+  @Input() item: Todo;
 
   constructor() { }
-
-  @Output() addData = new EventEmitter<string>();
-
-  change() {
-    this.addData.emit(this.title + ' ' + this.description);
-  }
 
   ngOnInit(): void {
   }

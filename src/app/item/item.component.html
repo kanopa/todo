@@ -1,14 +1,14 @@
 <div class="wrapper">
     <div class="item">
         <div class="title-item">
-            <input type="text" placeholder="Your title" [(ngModel)]="title">
+            <input type="text" placeholder="Your title" [(ngModel)]="item.title">
         </div>
         <div class="description">
-            <input type="text" placeholder="Your description" [(ngModel)]="description">
+            <input type="text" placeholder="Your description">
         </div>
         <div class="date">
-            <p>Date Created: </p>
-            <p>Date Closed: </p>
+            <p>Created: {{item.dateStart | date: 'short'}}</p>
+            <p *ngIf="item.dateEnd">Closed: {{item.dateEnd | date: 'short'}}</p>
         </div>
     </div>
 </div>

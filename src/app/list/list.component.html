@@ -1,8 +1,5 @@
 <div class="wrapper" cdkDropListGroup>
-    <div class="container todo"
-    cdkDropList
-    [cdkDropListData]="list"
-    (cdkDropListDropped)="drop($event)">
+    <div class="container todo">
         <div class="main-field">
             <input type="text" placeholder="To do">
             <div class="plus-item" (click)="addToList()">
@@ -12,24 +9,27 @@
                 </svg>
             </div>
         </div>
-        <div class="wrapper-item">
-            <app-item *ngFor="let item of list" (addData)=addToList() cdkDrag></app-item>
+        <div class="wrapper-item"
+        cdkDropList
+        [cdkDropListData]="list"
+        (cdkDropListDropped)="drop($event)">
+            <app-item *ngFor="let item of list" cdkDrag [item]="item"></app-item>
         </div>
     </div>
-    <div class="container"
-    cdkDropList
-    [cdkDropListData]="done"
-    (cdkDropListDropped)="drop($event)">
+    <div class="container">
         <div class="main-field">
             <input type="text" placeholder="Done">
-            <div class="plus-item minus">
+            <div class="plus-item minus" (click)="removeToList()">
                 <svg width="36" height="10" viewBox="0 0 60 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="60" width="10" height="60" rx="5" transform="rotate(90 60 0)"/>
                 </svg>
             </div>
         </div>
-        <div class="wrapper-item">
-            <app-item *ngFor="let item of done" (addData)=addToList() cdkDrag></app-item>
+        <div class="wrapper-item" 
+        cdkDropList
+        [cdkDropListData]="done"
+        (cdkDropListDropped)="drop($event)">
+            <app-item *ngFor="let item of done" cdkDrag [item]="item"></app-item>
         </div>
     </div>
 </div>
