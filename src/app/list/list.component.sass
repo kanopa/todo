@@ -15,6 +15,30 @@ div
         border-radius: 10px
         z-index: 10
         box-shadow: 5px 5px 0px #aaaaaa, 5px 5px 0px #aaaaaa
+        .filter-input
+            position: absolute
+            top: -50px
+            left: 0
+            width: 100%
+            height: 35px
+            background-color: white
+            border-radius: 10px
+            input
+                padding: 0 10px
+                height: 100%
+                width: 100%
+                font-size: 18px
+                outline: none
+                border: 0
+                background-color: transparent
+                transition: .2s ease
+                &:focus
+                    padding-left: 20px
+            .filter-cancel-item
+                align-items: center
+                height: 100%
+                padding: 0 20px 0 20px
+                cursor: pointer
         .main-field
             width: 100%
             padding: 15px 40px
@@ -46,6 +70,9 @@ div
                     fill: #39495c
                 &:hover
                     transform: rotate(90deg)
+            .filter-item
+                margin-left: 20px
+                cursor: pointer
             .minus
                 height: 100%
                 align-items: center

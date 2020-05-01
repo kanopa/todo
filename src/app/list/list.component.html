@@ -1,5 +1,15 @@
 <div class="wrapper" cdkDropListGroup>
     <div class="container todo">
+        <div class="filter-input" *ngIf="flag">
+            <input id="input-filter" type="text" [(ngModel)]="title" placeholder="Filtering">
+            <div class="filter-cancel-item" (click)="toggle()">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12.247 0.000336331C6.20544 0.00543328 0.651359 5.04783 0.0813639 11.0795C-0.530286 16.2169 2.35625 21.5865 7.0675 23.7686C11.4427 25.9105 17.0584 25.2326 20.6872 21.9347C24.3792 18.7347 25.9924 13.2803 24.3707 8.62694C22.8284 3.87948 18.2769 0.244949 13.2639 0.0249693C12.9254 0.00279691 12.5861 -0.00135364 12.247 0.000336331V0.000336331ZM12.4945 3.91746C16.9438 3.78783 21.0229 7.71836 21.0751 12.1766C21.2675 16.2552 18.2083 20.2602 14.1504 20.944C10.2236 21.7319 5.86847 19.4588 4.49401 15.6404C3.01433 11.8645 4.52393 7.08949 8.12559 5.10767C9.44245 4.3332 10.967 3.91555 12.4945 3.91746V3.91746ZM9.40461 6.98342L6.98542 9.4065L10.0985 12.5246L7.04165 15.5864L9.42244 17.971L12.4793 14.9092L15.5942 18.0291L18.0134 15.606L14.8985 12.4862L17.9554 9.42427L15.5746 7.03965C14.5556 8.06026 13.5367 9.08088 12.5177 10.1015L9.40461 6.98344V6.98342Z"
+                        fill="#39495c" />
+                </svg>
+            </div>
+        </div>
         <div class="main-field">
             <input type="text" placeholder="To do">
             <div class="plus-item" (click)="addToList()">
@@ -8,28 +18,46 @@
                         d="M30 0C27.2386 0 25 2.23853 25 5V25H5C2.23859 25 0 27.2385 0 30C0 32.7615 2.23859 35 5 35H25V55C25 57.7615 27.2386 60 30 60C32.7614 60 35 57.7615 35 55V35H55C57.7614 35 60 32.7615 60 30C60 27.2385 57.7614 25 55 25H35V5C35 2.23853 32.7614 0 30 0Z" />
                 </svg>
             </div>
+            <div class="filter-item" (click)="toggle()">
+                <svg width="41" height="36" viewBox="0 0 41 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.9133 34.3911C11.9133 35.281 12.6272 36 13.5121 36H26.7054C27.5904 36 28.3043 35.281 28.3043 34.3911V24.5363H11.9133V34.3911ZM38.6166 0H1.60097C0.369125 0 -0.400149 1.34246 0.218287 2.41341L11.3451 21.3184H28.8825L40.0093 2.41341C40.6177 1.34246 39.8485 0 38.6166 0V0Z"
+                        fill="#39495c" />
+                </svg>
+            </div>
         </div>
-        <div class="wrapper-item"
-        cdkDropList
-        [cdkDropListData]="list"
-        (cdkDropListDropped)="drop($event)">
-            <app-item *ngFor="let item of list" cdkDrag [item]="item"></app-item>
+        <div class="wrapper-item" cdkDropList [cdkDropListData]="list" (cdkDropListDropped)="drop($event)">
+            <app-item *ngFor="let item of list | filter: title" cdkDrag [item]="item"></app-item>
         </div>
     </div>
     <div class="container">
+        <div class="filter-input" *ngIf="flagDone">
+            <input id="input-filter" type="text" [(ngModel)]="title2" placeholder="Filtering">
+            <div class="filter-cancel-item" (click)="toggleDone()">
+                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M12.247 0.000336331C6.20544 0.00543328 0.651359 5.04783 0.0813639 11.0795C-0.530286 16.2169 2.35625 21.5865 7.0675 23.7686C11.4427 25.9105 17.0584 25.2326 20.6872 21.9347C24.3792 18.7347 25.9924 13.2803 24.3707 8.62694C22.8284 3.87948 18.2769 0.244949 13.2639 0.0249693C12.9254 0.00279691 12.5861 -0.00135364 12.247 0.000336331V0.000336331ZM12.4945 3.91746C16.9438 3.78783 21.0229 7.71836 21.0751 12.1766C21.2675 16.2552 18.2083 20.2602 14.1504 20.944C10.2236 21.7319 5.86847 19.4588 4.49401 15.6404C3.01433 11.8645 4.52393 7.08949 8.12559 5.10767C9.44245 4.3332 10.967 3.91555 12.4945 3.91746V3.91746ZM9.40461 6.98342L6.98542 9.4065L10.0985 12.5246L7.04165 15.5864L9.42244 17.971L12.4793 14.9092L15.5942 18.0291L18.0134 15.606L14.8985 12.4862L17.9554 9.42427L15.5746 7.03965C14.5556 8.06026 13.5367 9.08088 12.5177 10.1015L9.40461 6.98344V6.98342Z"
+                        fill="#39495c" />
+                </svg>
+            </div>
+        </div>
         <div class="main-field">
             <input type="text" placeholder="Done">
             <div class="plus-item minus" (click)="removeToList()">
                 <svg width="36" height="10" viewBox="0 0 60 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="60" width="10" height="60" rx="5" transform="rotate(90 60 0)"/>
+                    <rect x="60" width="10" height="60" rx="5" transform="rotate(90 60 0)" />
+                </svg>
+            </div>
+            <div class="filter-item" (click)="toggleDone()">
+                <svg width="41" height="36" viewBox="0 0 41 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M11.9133 34.3911C11.9133 35.281 12.6272 36 13.5121 36H26.7054C27.5904 36 28.3043 35.281 28.3043 34.3911V24.5363H11.9133V34.3911ZM38.6166 0H1.60097C0.369125 0 -0.400149 1.34246 0.218287 2.41341L11.3451 21.3184H28.8825L40.0093 2.41341C40.6177 1.34246 39.8485 0 38.6166 0V0Z"
+                        fill="#39495c" />
                 </svg>
             </div>
         </div>
-        <div class="wrapper-item" 
-        cdkDropList
-        [cdkDropListData]="done"
-        (cdkDropListDropped)="drop($event)">
-            <app-item *ngFor="let item of done" cdkDrag [item]="item"></app-item>
+        <div class="wrapper-item" cdkDropList [cdkDropListData]="done" (cdkDropListDropped)="drop($event)">
+            <app-item *ngFor="let item of done | filter: title2" cdkDrag [item]="item"></app-item>
         </div>
     </div>
 </div>

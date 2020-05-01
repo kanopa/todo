@@ -9,9 +9,16 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class ListComponent implements OnInit {
 
-  list: Todo[] = [];
+  list: Todo[] = [
+    {id: 1, title: 'name', description: '123', dateStart: new Date(), dateEnd: null},
+    {id: 2, title: 'name2', description: '123', dateStart: new Date(), dateEnd: null}
+  ];
 
   done: Todo[] = [];
+  title: string;
+  title2: string;
+  flag = false;
+  flagDone = false;
 
   constructor() { }
 
@@ -24,6 +31,21 @@ export class ListComponent implements OnInit {
       dateEnd: null
     };
     this.list.push(item);
+    console.log(this.list);
+  }
+
+  toggle() {
+    this.flag = !this.flag;
+    if (this.flag === false) {
+      this.title = '';
+    }
+  }
+
+  toggleDone() {
+    this.flagDone = !this.flagDone;
+    if (this.flagDone === false) {
+      this.title2 = '';
+    }
   }
 
   removeToList() {

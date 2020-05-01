@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { FilterPipe } from './filter/filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     ItemComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
