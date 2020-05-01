@@ -7,6 +7,7 @@ import { ListComponent } from './list/list.component';
 import { ItemComponent } from './item/item.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { FilterPipe } from './filter/filter.pipe';
+import { HoverDirective } from './hover/hover.directive';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FilterPipe } from './filter/filter.pipe';
     ListComponent,
     ItemComponent,
     FilterPipe,
+    HoverDirective,
   ],
   imports: [
     BrowserModule,
